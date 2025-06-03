@@ -16,7 +16,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "venues")
+@Table(name = "venue")
 public class Venue {
 
   @Id
@@ -30,6 +30,6 @@ public class Venue {
   @Column(name = "address")
   private String address;
 
-  @Column(name = "capacity")
-  private long capacity;
+  @Column(name = "total_capacity")
+  private long totalCapacity;
 }

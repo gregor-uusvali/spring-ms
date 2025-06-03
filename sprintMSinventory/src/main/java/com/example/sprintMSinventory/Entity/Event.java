@@ -18,7 +18,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "events")
+@Table(name = "event")
 public class Event {
 
   @Id
