@@ -1,22 +1,20 @@
-package com.example.sprintMSinventory.Response;
+package com.example.springMSbooking.DTO;
 
 import java.math.BigDecimal;
-
-import com.example.sprintMSinventory.Entity.Venue;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @Builder
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class EventInventoryResponse {
+public class InventoryResponseDTO {
   private Long eventId;
   private String event;
   private Long capacity;
-  private Venue venue;	
+  private VenueDTO venue;	
   private BigDecimal ticketPrice;
 }

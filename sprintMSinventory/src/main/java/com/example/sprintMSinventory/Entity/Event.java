@@ -1,5 +1,7 @@
 package com.example.sprintMSinventory.Entity;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,6 +35,9 @@ public class Event {
 
   @Column(name = "left_capacity")
   private long leftCapacity;
+
+  @Column(name = "ticket_price")
+  private BigDecimal ticketPrice;
 
   @ManyToOne
   @JoinColumn(name = "venue_id")
