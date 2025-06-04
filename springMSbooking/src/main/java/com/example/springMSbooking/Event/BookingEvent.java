@@ -1,4 +1,4 @@
-package com.example.springMSbooking.DTO;
+package com.example.springMSbooking.Event;
 
 import java.math.BigDecimal;
 
@@ -7,13 +7,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Builder
 @Data
-@AllArgsConstructor
+@Builder
 @NoArgsConstructor
-public class BookingResponseDTO {
+@AllArgsConstructor
+public class BookingEvent {
   private Long userId;
   private Long eventId;
   private Long ticketCount;
   private BigDecimal totalPrice;
+
 }
