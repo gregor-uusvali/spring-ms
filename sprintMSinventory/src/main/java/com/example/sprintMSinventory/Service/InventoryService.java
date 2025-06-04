@@ -12,7 +12,10 @@ import com.example.sprintMSinventory.Repository.VenueRepository;
 import com.example.sprintMSinventory.Response.EventInventoryResponse;
 import com.example.sprintMSinventory.Response.VenueInventoryResponse;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class InventoryService {
 
   private final EventRepository eventRepository;
@@ -50,5 +53,12 @@ public class InventoryService {
         .ticketPrice(event.getTicketPrice())
         .eventId(event.getId())
         .build();
-  } 
+  }
+
+  public void updateEventCapacity(final Long eventId, final Long capacity) {
+    final Event event = eventRepository.findById(eventId).orElseThrow(() -> new RuntimeException("Event not found"));
+    event.setLeftCapacity(event.getLeftCapacity() - capacity);
+    eventRepository.saveAndFlush(event);
+    log.info("Event capacity updated successfully");
+  }
 }

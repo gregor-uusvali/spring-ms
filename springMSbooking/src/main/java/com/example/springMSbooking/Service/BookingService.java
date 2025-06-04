@@ -46,7 +46,17 @@ public class BookingService {
     // create booking
     BookingEvent bookingEvent = createBookingEvent(bookingRequest, customer, inventory);
     // send booking to kafka queue
-    kafkaTemplate.send("booking", bookingEvent);
+    log.info("About to send booking to kafka. Event details: {}", bookingEvent);
+    kafkaTemplate.send("booking", bookingEvent).whenComplete((result, ex) -> {
+        if (ex == null) {
+            log.info("Successfully sent message to kafka. Topic: {}, Partition: {}, Offset: {}", 
+                result.getRecordMetadata().topic(),
+                result.getRecordMetadata().partition(),
+                result.getRecordMetadata().offset());
+        } else {
+            log.error("Failed to send message to kafka", ex);
+        }
+    });
     log.info("Booking sent to kafka: {}", bookingEvent);
 
     return BookingResponseDTO.builder()

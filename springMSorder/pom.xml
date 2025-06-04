@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>springMSbooking</artifactId>
+	<artifactId>springMSorder</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>springMSbooking</name>
-	<description>Booking ms</description>
+	<name>springMSorder</name>
+	<description>Order service</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -89,19 +89,6 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<configuration>
-					<archive>
-						<manifest>
-							<addClasspath>true</addClasspath>
-							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>com.example.springMSbooking.SpringMSbookingApplication</mainClass>
-						</manifest>
-					</archive>
 				</configuration>
 			</plugin>
 		</plugins>
