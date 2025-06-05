@@ -24,7 +24,8 @@ public class BookingService {
   private InventoryServiceClient inventoryServiceClient;
   private KafkaTemplate<String, BookingEvent> kafkaTemplate;
 
-  public BookingService(final CustomerRepository customerRepository, final InventoryServiceClient inventoryServiceClient,
+  public BookingService(final CustomerRepository customerRepository,
+      final InventoryServiceClient inventoryServiceClient,
       final KafkaTemplate<String, BookingEvent> kafkaTemplate) {
     this.customerRepository = customerRepository;
     this.inventoryServiceClient = inventoryServiceClient;
@@ -48,14 +49,14 @@ public class BookingService {
     // send booking to kafka queue
     log.info("About to send booking to kafka. Event details: {}", bookingEvent);
     kafkaTemplate.send("booking", bookingEvent).whenComplete((result, ex) -> {
-        if (ex == null) {
-            log.info("Successfully sent message to kafka. Topic: {}, Partition: {}, Offset: {}", 
-                result.getRecordMetadata().topic(),
-                result.getRecordMetadata().partition(),
-                result.getRecordMetadata().offset());
-        } else {
-            log.error("Failed to send message to kafka", ex);
-        }
+      if (ex == null) {
+        log.info("Successfully sent message to kafka. Topic: {}, Partition: {}, Offset: {}",
+            result.getRecordMetadata().topic(),
+            result.getRecordMetadata().partition(),
+            result.getRecordMetadata().offset());
+      } else {
+        log.error("Failed to send message to kafka", ex);
+      }
     });
     log.info("Booking sent to kafka: {}", bookingEvent);
 
