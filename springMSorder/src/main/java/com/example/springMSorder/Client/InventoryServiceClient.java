@@ -14,7 +14,7 @@ public class InventoryServiceClient {
 
   public ResponseEntity<Void> updateInventory(BookingEvent bookingEvent) {
     final RestTemplate restTemplate = new RestTemplate();
-    restTemplate.put(inventoryServiceUrl + bookingEvent.getEventId(), bookingEvent);
+    restTemplate.put(inventoryServiceUrl + bookingEvent.getEventId() + "/capacity/" + bookingEvent.getTicketCount(), null);
     return ResponseEntity.ok().build();
   }
 

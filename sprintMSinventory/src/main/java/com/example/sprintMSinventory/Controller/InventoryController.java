@@ -39,7 +39,7 @@ public class InventoryController {
     return inventoryService.getEventById(eventId);
   }
 
-  @PutMapping("inventory/events/{eventId}")
+  @PutMapping("inventory/events/{eventId}/capacity/{capacity}")
   private ResponseEntity<Void> updateEventCapacity(@PathVariable("eventId") final Long eventId, @PathVariable("capacity") final Long capacity) {
     inventoryService.updateEventCapacity(eventId, capacity);
     return ResponseEntity.ok().build();
