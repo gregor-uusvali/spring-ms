@@ -15,7 +15,7 @@ public class BookingServiceRoutes {
   public RouterFunction<ServerResponse> bookingServiceRouter() {
     return GatewayRouterFunctions.route("booking-service")
         .route(RequestPredicates.POST("/api/v1/booking"),
-            HandlerFunctions.http("http://localhost:8081/api/v1/booking"))
+            HandlerFunctions.forward("http://localhost:8081/api/v1/booking"))
         .build();
   }
 
