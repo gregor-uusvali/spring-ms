@@ -24,6 +24,6 @@ public class InventoryServiceRoutes {
 
   private ServerResponse forwardWithPathvariable(ServerRequest request, String pathVariable, String url) throws Exception {
     String venueId = request.pathVariable(pathVariable);
-    return HandlerFunctions.forward(url + venueId).handle(request);
+    return HandlerFunctions.http(url + venueId).handle(request);
   }
 }
